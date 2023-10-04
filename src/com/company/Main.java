@@ -19,5 +19,9 @@ public class Main {
         tree.traverseInOrder(tree.getRoot());
         System.out.println();
         tree.traversePostOrder(tree.getRoot());
+        System.out.println();
+
+        System.out.println(tree.isPresent("Test"));
+        System.out.println(tree.isPresent("C"));
     }
 }

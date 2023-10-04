@@ -62,6 +62,30 @@ public class BinaryTree {
         }
     }
 
+    public boolean isPresent(String item) {
+        if (this.root != null) {
+            Queue<BinaryNode> queue = new LinkedList<>();
+            queue.add(this.root);
+
+            while (!queue.isEmpty()) {
+                BinaryNode current = queue.remove();
+                if (current.getItem().equals(item)) {
+                    return true;
+                }
+
+                if (current.getLeft() != null) {
+                    queue.add(current.getLeft());
+                }
+
+                if (current.getRight() != null) {
+                    queue.add(current.getRight());
+                }
+            }
+        }
+
+        return false;
+    }
+
     public void insert(String item) {
         BinaryNode newNode = new BinaryNode(item);
 
