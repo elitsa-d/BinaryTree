@@ -86,4 +86,8 @@ public class BinaryTree {
             }
         }
     }
+
+    public void delete() {
+        this.root = null;
+    }
 }
