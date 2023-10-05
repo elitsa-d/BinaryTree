@@ -23,5 +23,9 @@ public class Main {
 
         System.out.println(tree.isPresent("Test"));
         System.out.println(tree.isPresent("C"));
+
+        System.out.println("Deepest node: " + tree.getDeepestNode().getItem());
+        tree.deleteDeepestNode();
+        System.out.println("Deepest node: " + tree.getDeepestNode().getItem());
     }
 }

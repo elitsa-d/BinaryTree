@@ -14,10 +14,6 @@ public class BinaryTree {
         return this.root;
     }
 
-    public void setRoot(BinaryNode root) {
-        this.root = root;
-    }
-
     public void traversePreOrder(BinaryNode root) {
         if (root != null) {
             System.out.print(root.getItem() + " ");
@@ -108,6 +104,55 @@ public class BinaryTree {
                     queue.add(current.getRight());
                 }
             }
+        }
+    }
+
+    public BinaryNode getDeepestNode() {
+        Queue<BinaryNode> queue = new LinkedList<>();
+        queue.add(this.root);
+        BinaryNode deepestNode = null;
+
+        while (!queue.isEmpty()) {
+            deepestNode = queue.remove();
+
+            if (deepestNode.getLeft() != null) {
+                queue.add(deepestNode.getLeft());
+            }
+
+            if (deepestNode.getRight() != null) {
+                queue.add(deepestNode.getRight());
+            }
+        }
+
+        return deepestNode;
+    }
+
+    public void deleteDeepestNode() {
+        if (this.getDeepestNode() != this.root) {
+            Queue<BinaryNode> queue = new LinkedList<>();
+            queue.add(this.root);
+            BinaryNode previous;
+            BinaryNode current = null;
+
+            while (!queue.isEmpty()) {
+                previous = current;
+                current = queue.remove();
+
+                if (current.getLeft() == null) {
+                    previous.setRight(null);
+                    break;
+                }
+
+                if (current.getRight() == null) {
+                    current.setLeft(null);
+                    break;
+                }
+
+                queue.add(current.getLeft());
+                queue.add(current.getRight());
+            }
+        } else {
+            this.delete();
         }
     }
 
