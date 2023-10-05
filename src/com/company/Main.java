@@ -27,5 +27,8 @@ public class Main {
         System.out.println("Deepest node: " + tree.getDeepestNode().getItem());
         tree.deleteDeepestNode();
         System.out.println("Deepest node: " + tree.getDeepestNode().getItem());
+
+        tree.deleteNode("C");
+        tree.traverseLevelOrder();
     }
 }

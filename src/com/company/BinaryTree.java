@@ -156,6 +156,31 @@ public class BinaryTree {
         }
     }
 
+    public void deleteNode(String value) {
+        if (this.isPresent(value)) {
+            Queue<BinaryNode> queue = new LinkedList<>();
+            queue.add(this.root);
+
+            while (!queue.isEmpty()) {
+                BinaryNode current = queue.remove();
+
+                if (current.getItem().equals(value)) {
+                    current.setItem(this.getDeepestNode().getItem());
+                    this.deleteDeepestNode();
+                    break;
+                }
+
+                if (current.getLeft() != null) {
+                    queue.add(current.getLeft());
+                }
+
+                if (current.getRight() != null) {
+                    queue.add(current.getRight());
+                }
+            }
+        }
+    }
+
     public void delete() {
         this.root = null;
     }
